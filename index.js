@@ -18,7 +18,7 @@ mongoose.connect(DB_URL)
 
 // Налаштування CORS
 app.use(cors({
-    origin: CLIENT_ORIGIN,
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
