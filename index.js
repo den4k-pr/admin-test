@@ -7,8 +7,8 @@ import router from './router.js';
 dotenv.config();
 
 const app = express();
-const DB_URL = process.env.DB_URL;
-const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN;
+const DB_URL = "mongodb+srv://yakovden4k:eBjx6XERNF7rcp70@cluster0.nq6fl.mongodb.net/posts";
+const CLIENT_ORIGIN = "https://admin-test.vercel.app/";
 const PORT = process.env.PORT || 5000;
 
 // Підключення до MongoDB
