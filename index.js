@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 // Налаштування парсингу JSON
 app.use(express.json());
 app.use(express.static('static'));
-app.use('/api', router);
+app.use(router);
 
 // Головний маршрут
 app.get('/', (req, res) => {
