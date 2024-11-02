@@ -11,12 +11,10 @@ const DB_URL = process.env.DB_URL;
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN;
 const PORT = process.env.PORT || 5000;
 
-// Підключення до MongoDB
 mongoose.connect(DB_URL)
     .then(() => console.log('MongoDB підключено'))
     .catch(err => console.error('Помилка підключення до MongoDB:', err));
 
-// Налаштування CORS
 app.use(cors({
     origin: CLIENT_ORIGIN,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -32,12 +30,18 @@ app.use(express.json());
 app.use(express.static('static'));
 app.use('/api', router);
 
-// Запуск сервера
+app.get('/', (req, res) => {
+    res.send('Сервер працює!');
+});
+
+app.use((req, res, next) => {
+    res.status(404).json({ message: "Resource not found" });
+});
+
 if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log(`Сервер запущено на http://localhost:${PORT}`);
     });
 }
 
-// Експортуємо серверну функцію для Vercel
 export default app;
