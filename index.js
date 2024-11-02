@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const DB_URL = process.env.DB_URL;
+const DB_URL = "mongodb+srv://yakovden4k:eBjx6XERNF7rcp70@cluster0.nq6fl.mongodb.net/posts?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
 // Модель поста
@@ -125,12 +125,5 @@ app.get('/', (req, res) => {
 app.use((req, res) => {
     res.status(404).json({ message: "Resource not found" });
 });
-
-// Запуск сервера в режимі розробки
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Сервер запущено на http://localhost:${PORT}`);
-    });
-}
 
 export default app;
