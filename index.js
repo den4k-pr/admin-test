@@ -25,13 +25,7 @@ app.use(cors({
 
 // Налаштування заголовка Content-Security-Policy
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", `
-        default-src 'self';
-        script-src 'self' https://vercel.live;
-        style-src 'self' 'unsafe-inline';
-        frame-src 'self' https://vercel.live;
-        object-src 'none';
-    `.replace(/\s+/g, ' ').trim()); // Видаляє зайві пробіли
+    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://vercel.live; style-src 'self' 'unsafe-inline'; frame-src 'self' https://vercel.live; object-src 'none';");
     next();
 });
 
